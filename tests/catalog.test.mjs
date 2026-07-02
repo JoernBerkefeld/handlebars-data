@@ -123,6 +123,10 @@ test('BUILTIN_BINDINGS have the expected shape', () => {
             typeof binding.description === 'string' && binding.description.length > 0,
             `${binding.name}: description`,
         );
+        assert.ok(
+            typeof binding.docUrl === 'string' && binding.docUrl.startsWith('https://'),
+            `${binding.name}: docUrl`,
+        );
     }
 });
 
