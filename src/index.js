@@ -1026,12 +1026,19 @@ export function getHelperMcnSince(name) {
 // ── Built-in data-source bindings ────────────────────────────────────────────
 
 /**
+ * Documentation URL shared by all built-in bindings. The bindings are described
+ * on the data-sources guide page (a guide page, not a per-binding reference).
+ */
+const BINDING_DOC_URL =
+    'https://developer.salesforce.com/docs/marketing/handlebars-for-marketing-cloud-next/guide/mcn-handlebars-guide-data-sources.html';
+
+/**
  * Salesforce-only built-in bindings written with the `{!$namespace.Field}`
  * syntax. These are reserved data-source references, not Handlebars helpers.
  *
  *  @type {{name: string, token: string, namespace: string, mcnSince: number, description: string}[]}
  */
-export const BUILTIN_BINDINGS = [
+const BUILTIN_BINDINGS_RAW = [
     {
         name: 'organization.Address',
         token: '{!$organization.Address}',
@@ -1054,6 +1061,16 @@ export const BUILTIN_BINDINGS = [
         description: 'The URL for the recipient to manage their email preferences.',
     },
 ];
+
+/**
+ * Canonical built-in `{!$...}` binding catalog, enriched with a documentation URL.
+ *
+ *  @type {{name: string, token: string, namespace: string, mcnSince: number, description: string, docUrl: string}[]}
+ */
+export const BUILTIN_BINDINGS = BUILTIN_BINDINGS_RAW.map((binding) => ({
+    ...binding,
+    docUrl: BINDING_DOC_URL,
+}));
 
 /** Case-insensitive lookup: lowercase binding name -> binding definition. */
 export const bindingLookup = new Map(

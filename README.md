@@ -15,7 +15,7 @@ Marketing Cloud Next's templating engine is based on [Handlebars.Net](https://gi
 | `getHelper(name)` | Case-insensitive helper lookup. |
 | `isHelper(name)` | Case-insensitive membership check. |
 | `getHelperMcnSince(name)` | API version a helper first shipped in, or `null`. |
-| `BUILTIN_BINDINGS` | The three `{!$...}` built-in data-source bindings. |
+| `BUILTIN_BINDINGS` | The three `{!$...}` built-in data-source bindings, each enriched with `docUrl`. |
 | `bindingLookup` / `bindingNames` / `isBuiltinBinding(name)` | Binding lookups. |
 | `UNSUPPORTED_CONSTRUCTS` | Handlebars constructs the MCN engine does not support (flagged as errors). |
 | `unsupportedByNodeType` | `Map` of `@handlebars/parser` AST node type → unsupported entries. |
