@@ -1,6 +1,6 @@
 {
     "name": "handlebars-data",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Canonical Handlebars for Marketing Cloud Next helper catalog, built-in bindings, and unsupported-construct definitions for SFMC tooling",
     "type": "module",
     "main": "src/index.js",
