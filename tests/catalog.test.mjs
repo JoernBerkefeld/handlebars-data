@@ -44,7 +44,7 @@ test('every helper has required fields with valid values', () => {
         assert.ok(VALID_ORIGINS.has(helper.origin), `${helper.name}: valid origin`);
         assert.ok(VALID_HELPER_TYPES.has(helper.helperType), `${helper.name}: valid helperType`);
         assert.equal(typeof helper.mcnSince, 'number', `${helper.name}: mcnSince is number`);
-        assert.ok(Number.isInteger(helper.mcnSince), `${helper.name}: mcnSince integer`);
+        assert.ok(Number.isSafeInteger(helper.mcnSince), `${helper.name}: mcnSince integer`);
         assert.ok(
             typeof helper.description === 'string' && helper.description.length > 0,
             `${helper.name}: description`,
@@ -118,7 +118,7 @@ test('BUILTIN_BINDINGS have the expected shape', () => {
             `${binding.name}: token`,
         );
         assert.equal(typeof binding.namespace, 'string');
-        assert.ok(Number.isInteger(binding.mcnSince), `${binding.name}: mcnSince integer`);
+        assert.ok(Number.isSafeInteger(binding.mcnSince), `${binding.name}: mcnSince integer`);
         assert.ok(
             typeof binding.description === 'string' && binding.description.length > 0,
             `${binding.name}: description`,
@@ -162,7 +162,10 @@ test('UNSUPPORTED_CONSTRUCTS entries are well-formed', () => {
 });
 
 test('unsupportedByNodeType indexes every construct', () => {
-    const total = [...unsupportedByNodeType.values()].reduce((sum, list) => sum + list.length, 0);
+    let total = 0;
+    for (const list of unsupportedByNodeType.values()) {
+        total += list.length;
+    }
     assert.equal(total, UNSUPPORTED_CONSTRUCTS.length);
     assert.ok(unsupportedByNodeType.has('PartialStatement'));
     assert.ok(unsupportedByNodeType.has('Decorator'));
