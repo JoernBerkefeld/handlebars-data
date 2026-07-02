@@ -1148,9 +1148,9 @@ export const UNSUPPORTED_CONSTRUCTS = [
 ];
 
 /** Lookup of unsupported constructs by astNodeType -> entries sharing that node type. */
-export const unsupportedByNodeType = UNSUPPORTED_CONSTRUCTS.reduce((map, entry) => {
-    const list = map.get(entry.astNodeType) ?? [];
+export const unsupportedByNodeType = new Map();
+for (const entry of UNSUPPORTED_CONSTRUCTS) {
+    const list = unsupportedByNodeType.get(entry.astNodeType) ?? [];
     list.push(entry);
-    map.set(entry.astNodeType, list);
-    return map;
-}, new Map());
+    unsupportedByNodeType.set(entry.astNodeType, list);
+}
