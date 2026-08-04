@@ -27,7 +27,9 @@
 const DEV_DOCS_BASE =
     'https://developer.salesforce.com/docs/marketing/handlebars-for-marketing-cloud-next/references';
 
-/** Map from category -> [folder, file-prefix] used to build doc URLs. */
+/**
+ * Map from category -> [folder, file-prefix] used to build doc URLs.
+ */
 const CATEGORY_DOC = {
     Math: ['mcn-handlebars-math-references', 'mcn-handlebars-reference-math'],
     Comparison: ['mcn-handlebars-comparison-references', 'mcn-handlebars-reference-comparison'],
@@ -984,13 +986,19 @@ export const HELPERS = HELPERS_RAW.map((helper) => ({
     docUrl: helperDocUrl(helper.category, helper.name),
 }));
 
-/** Case-insensitive lookup: lowercase helper name -> helper definition. */
+/**
+ * Case-insensitive lookup: lowercase helper name -> helper definition.
+ */
 export const helperLookup = new Map(HELPERS.map((helper) => [helper.name.toLowerCase(), helper]));
 
-/** Set of lowercase helper names for quick membership checks. */
+/**
+ * Set of lowercase helper names for quick membership checks.
+ */
 export const helperNames = new Set(HELPERS.map((helper) => helper.name.toLowerCase()));
 
-/** Ordered list of canonical camelCase helper names. */
+/**
+ * Ordered list of canonical camelCase helper names.
+ */
 export const CANONICAL_HELPERS = HELPERS.map((helper) => helper.name);
 
 /**
@@ -1072,12 +1080,16 @@ export const BUILTIN_BINDINGS = BUILTIN_BINDINGS_RAW.map((binding) => ({
     docUrl: BINDING_DOC_URL,
 }));
 
-/** Case-insensitive lookup: lowercase binding name -> binding definition. */
+/**
+ * Case-insensitive lookup: lowercase binding name -> binding definition.
+ */
 export const bindingLookup = new Map(
     BUILTIN_BINDINGS.map((binding) => [binding.name.toLowerCase(), binding]),
 );
 
-/** Set of lowercase binding names for quick membership checks. */
+/**
+ * Set of lowercase binding names for quick membership checks.
+ */
 export const bindingNames = new Set(BUILTIN_BINDINGS.map((binding) => binding.name.toLowerCase()));
 
 /**
@@ -1147,7 +1159,9 @@ export const UNSUPPORTED_CONSTRUCTS = [
     },
 ];
 
-/** Lookup of unsupported constructs by astNodeType -> entries sharing that node type. */
+/**
+ * Lookup of unsupported constructs by astNodeType -> entries sharing that node type.
+ */
 export const unsupportedByNodeType = new Map();
 for (const entry of UNSUPPORTED_CONSTRUCTS) {
     const list = unsupportedByNodeType.get(entry.astNodeType) ?? [];
