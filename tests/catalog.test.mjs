@@ -17,6 +17,15 @@ import {
     unsupportedByNodeType,
 } from '../src/index.js';
 
+import { MATH_HELPERS } from '../src/helpers/math.js';
+import { COMPARISON_HELPERS } from '../src/helpers/comparison.js';
+import { STRING_HELPERS } from '../src/helpers/string.js';
+import { OBJECTS_HELPERS } from '../src/helpers/objects.js';
+import { UTILITY_HELPERS } from '../src/helpers/utility.js';
+import { DATE_TIME_HELPERS } from '../src/helpers/date-time.js';
+import { CONTENT_HELPERS } from '../src/helpers/content.js';
+import { PERSONALIZATION_HELPERS } from '../src/helpers/personalization.js';
+
 const VALID_ORIGINS = new Set(['handlebars-builtin', 'mcn-helper', 'mcn-platform']);
 const VALID_HELPER_TYPES = new Set(['inline', 'block', 'both']);
 const VALID_CATEGORIES = new Set([
@@ -180,4 +189,31 @@ test('no unsupported construct collides with a known helper name', () => {
             );
         }
     }
+});
+
+test('each per-category helper file is non-empty and internally consistent', () => {
+    const categoryFiles = [
+        ['Math', MATH_HELPERS],
+        ['Comparison', COMPARISON_HELPERS],
+        ['String', STRING_HELPERS],
+        ['Objects', OBJECTS_HELPERS],
+        ['Utility', UTILITY_HELPERS],
+        ['Date & Time', DATE_TIME_HELPERS],
+        ['Content', CONTENT_HELPERS],
+        ['Personalization', PERSONALIZATION_HELPERS],
+    ];
+    let total = 0;
+    for (const [category, helpers] of categoryFiles) {
+        assert.ok(helpers.length > 0, `${category}: file is non-empty`);
+        for (const helper of helpers) {
+            assert.equal(
+                helper.category,
+                category,
+                `${helper.name}: category must match its file (${category})`,
+            );
+        }
+        total += helpers.length;
+    }
+    // The split files together cover every helper, with none missing or extra.
+    assert.equal(total, HELPERS.length, 'category files cover all helpers exactly');
 });

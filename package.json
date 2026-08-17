@@ -7,9 +7,7 @@
     "exports": {
         ".": "./src/index.js"
     },
-    "files": [
-        "src"
-    ],
+    "files": ["src"],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/JoernBerkefeld/handlebars-data.git"
@@ -53,8 +51,6 @@
         "prettier": "^3.9.6"
     },
     "lint-staged": {
-        "*.{js,mjs,cjs}": [
-            "eslint --fix"
-        ]
+        "*.{js,mjs,cjs}": ["eslint --fix"]
     }
 }

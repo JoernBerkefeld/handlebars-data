@@ -6,19 +6,19 @@ Marketing Cloud Next's templating engine is based on [Handlebars.Net](https://gi
 
 ## Exports
 
-| Export | Description |
-| --- | --- |
-| `HELPERS` | Array of all 51 MCN Handlebars helper definitions, enriched with `docUrl`. |
-| `helperLookup` | `Map` of lowercase helper name → definition. |
-| `helperNames` | `Set` of lowercase helper names. |
-| `CANONICAL_HELPERS` | Ordered list of canonical camelCase helper names. |
-| `getHelper(name)` | Case-insensitive helper lookup. |
-| `isHelper(name)` | Case-insensitive membership check. |
-| `getHelperMcnSince(name)` | API version a helper first shipped in, or `null`. |
-| `BUILTIN_BINDINGS` | The three `{!$...}` built-in data-source bindings, each enriched with `docUrl`. |
-| `bindingLookup` / `bindingNames` / `isBuiltinBinding(name)` | Binding lookups. |
-| `UNSUPPORTED_CONSTRUCTS` | Handlebars constructs the MCN engine does not support (flagged as errors). |
-| `unsupportedByNodeType` | `Map` of `@handlebars/parser` AST node type → unsupported entries. |
+| Export                                                      | Description                                                                     |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `HELPERS`                                                   | Array of all 51 MCN Handlebars helper definitions, enriched with `docUrl`.      |
+| `helperLookup`                                              | `Map` of lowercase helper name → definition.                                    |
+| `helperNames`                                               | `Set` of lowercase helper names.                                                |
+| `CANONICAL_HELPERS`                                         | Ordered list of canonical camelCase helper names.                               |
+| `getHelper(name)`                                           | Case-insensitive helper lookup.                                                 |
+| `isHelper(name)`                                            | Case-insensitive membership check.                                              |
+| `getHelperMcnSince(name)`                                   | API version a helper first shipped in, or `null`.                               |
+| `BUILTIN_BINDINGS`                                          | The three `{!$...}` built-in data-source bindings, each enriched with `docUrl`. |
+| `bindingLookup` / `bindingNames` / `isBuiltinBinding(name)` | Binding lookups.                                                                |
+| `UNSUPPORTED_CONSTRUCTS`                                    | Handlebars constructs the MCN engine does not support (flagged as errors).      |
+| `unsupportedByNodeType`                                     | `Map` of `@handlebars/parser` AST node type → unsupported entries.              |
 
 ## Helper metadata
 
