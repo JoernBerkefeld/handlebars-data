@@ -1,13 +1,15 @@
 {
     "name": "handlebars-data",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "description": "Canonical Handlebars for Marketing Cloud Next helper catalog, built-in bindings, and unsupported-construct definitions for SFMC tooling",
     "type": "module",
     "main": "src/index.js",
     "exports": {
         ".": "./src/index.js"
     },
-    "files": ["src"],
+    "files": [
+        "src"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/JoernBerkefeld/handlebars-data.git"
@@ -51,6 +53,8 @@
         "prettier": "^3.9.6"
     },
     "lint-staged": {
-        "*.{js,mjs,cjs}": ["eslint --fix"]
+        "*.{js,mjs,cjs}": [
+            "eslint --fix"
+        ]
     }
 }
