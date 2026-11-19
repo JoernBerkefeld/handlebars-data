@@ -17,6 +17,9 @@ export const CATEGORY_DOC = {
     Utility: ['mcn-handlebars-utility-references', 'mcn-handlebars-reference-utility'],
     'Date & Time': ['mcn-handlebars-date-time-references', 'mcn-handlebars-reference-date-time'],
     Content: ['mcn-handlebars-content-references', 'mcn-handlebars-reference-content'],
+    Data: ['mcn-handlebars-data-references', 'mcn-handlebars-reference-data'],
+    Encryption: ['mcn-handlebars-encryption-references', 'mcn-handlebars-reference-encryption'],
+    HTTP: ['mcn-handlebars-http-references', 'mcn-handlebars-reference-http'],
     Personalization: [
         'mcn-handlebars-personalization-references',
         'mcn-handlebars-reference-personalization',

@@ -19,7 +19,7 @@
  *   - 'mcn-platform'       Salesforce-only data access / personalization / content
  *
  * `mcnSince` is the Marketing Cloud Next API version that first shipped the
- * helper (65 = Winter '26, 67 = Summer '26).
+ * helper (65 = Winter '26, 67 = Summer '26, 68 = Winter '27).
  *
  * ── File layout ──────────────────────────────────────────────────────────────
  * This file is a thin re-export barrel. The catalog data lives in:

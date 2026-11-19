@@ -25,6 +25,10 @@ import { UTILITY_HELPERS } from '../src/helpers/utility.js';
 import { DATE_TIME_HELPERS } from '../src/helpers/date-time.js';
 import { CONTENT_HELPERS } from '../src/helpers/content.js';
 import { PERSONALIZATION_HELPERS } from '../src/helpers/personalization.js';
+import { DATA_HELPERS } from '../src/helpers/data.js';
+import { ENCRYPTION_HELPERS } from '../src/helpers/encryption.js';
+import { HTTP_HELPERS } from '../src/helpers/http.js';
+import { DEV_DOCS_BASE } from '../src/constants.js';
 
 const VALID_ORIGINS = new Set(['handlebars-builtin', 'mcn-helper', 'mcn-platform']);
 const VALID_HELPER_TYPES = new Set(['inline', 'block', 'both']);
@@ -37,11 +41,99 @@ const VALID_CATEGORIES = new Set([
     'Date & Time',
     'Content',
     'Personalization',
+    'Data',
+    'Encryption',
+    'HTTP',
 ]);
 const CAMEL_CASE = /^[a-z][a-zA-Z0-9]*$/;
 
-test('HELPERS catalog contains the expected 51 MCN helpers', () => {
-    assert.equal(HELPERS.length, 51);
+// Helpers first documented for MCN API 68 (Winter '27), by category.
+const API_68_HELPERS = {
+    Content: ['buildRowSetFromString', 'buildRowSetFromXml', 'buildUrl', 'impressionRegion'],
+    Data: ['assignCoupon', 'claimRow'],
+    'Date & Time': ['datePart'],
+    Encryption: ['encode', 'md5', 'sha1', 'sha256', 'sha512'],
+    HTTP: ['encodeURI', 'encodeURIComponent'],
+    String: ['regExMatch', 'stringToHex'],
+    Utility: ['base64Decode', 'base64Encode', 'domain', 'guid', 'isEmailAddress', 'isNullDefault'],
+};
+
+test('HELPERS catalog contains the expected 73 MCN helpers', () => {
+    assert.equal(HELPERS.length, 73);
+});
+
+test('API 68 helpers are present with the documented casing, category and version', () => {
+    const api68Names = Object.values(API_68_HELPERS).flat();
+    for (const [category, names] of Object.entries(API_68_HELPERS)) {
+        for (const name of names) {
+            const helper = HELPERS.find((h) => h.name === name);
+            assert.ok(helper, `${name}: present with exact casing`);
+            assert.equal(helper.category, category, `${name}: category`);
+            assert.equal(helper.mcnSince, 68, `${name}: mcnSince`);
+        }
+    }
+    assert.deepEqual(
+        new Set(HELPERS.filter((h) => h.mcnSince === 68).map((h) => h.name)),
+        new Set(api68Names),
+        'no other helper claims API 68',
+    );
+});
+
+test('docUrl of the Data, Encryption and HTTP helpers points at their category pages', () => {
+    const expected = {
+        assignCoupon: 'mcn-handlebars-data-references/mcn-handlebars-reference-data-assigncoupon',
+        hash: 'mcn-handlebars-data-references/mcn-handlebars-reference-data-hash',
+        query: 'mcn-handlebars-data-references/mcn-handlebars-reference-data-query',
+        queryFirst: 'mcn-handlebars-data-references/mcn-handlebars-reference-data-queryfirst',
+        sha256: 'mcn-handlebars-encryption-references/mcn-handlebars-reference-encryption-sha256',
+        encodeURIComponent:
+            'mcn-handlebars-http-references/mcn-handlebars-reference-http-encodeuricomponent',
+    };
+    for (const [name, path] of Object.entries(expected)) {
+        assert.equal(getHelper(name).docUrl, `${DEV_DOCS_BASE}/${path}.html`, `${name}: docUrl`);
+    }
+});
+
+test('hash, query and queryFirst moved to the Data category and keep API 67', () => {
+    for (const name of ['hash', 'query', 'queryFirst']) {
+        assert.equal(getHelper(name).category, 'Data', `${name}: category`);
+        assert.equal(getHelper(name).mcnSince, 67, `${name}: mcnSince`);
+        assert.ok(
+            UTILITY_HELPERS.every((h) => h.name !== name),
+            `${name}: left Utility`,
+        );
+    }
+});
+
+test('helpers taking only named arguments expose no positional params', () => {
+    for (const name of ['claimRow', 'encode', 'query']) {
+        const positional = getHelper(name).params.filter((p) => !p.variadic);
+        assert.deepEqual(positional, [], `${name}: named arguments only`);
+    }
+});
+
+test('named arguments of API 68 helpers are not modelled as positional params', () => {
+    const positionalCounts = {
+        md5: 1,
+        sha1: 1,
+        sha256: 1,
+        sha512: 1,
+        stringToHex: 1,
+        base64Decode: 1,
+        base64Encode: 1,
+        buildUrl: 1,
+        buildRowSetFromXml: 2,
+        regExMatch: 3,
+    };
+    for (const [name, count] of Object.entries(positionalCounts)) {
+        const helper = getHelper(name);
+        assert.equal(
+            helper.params.filter((p) => !p.variadic).length,
+            count,
+            `${name}: positional param count`,
+        );
+        assert.ok(helper.params.at(-1).variadic, `${name}: trailing variadic for named arguments`);
+    }
 });
 
 test('every helper has required fields with valid values', () => {
@@ -95,12 +187,13 @@ test('getHelper / isHelper / getHelperMcnSince behave case-insensitively', () =>
     assert.equal(getHelper('IF').name, 'if');
     assert.equal(getHelperMcnSince('now'), 67);
     assert.equal(getHelperMcnSince('add'), 65);
+    assert.equal(getHelperMcnSince('ENCODEURI'), 68);
     assert.equal(getHelperMcnSince('notAHelper'), null);
 });
 
-test('mcnSince is only 65 or 67', () => {
+test('mcnSince is only 65, 67 or 68', () => {
     for (const helper of HELPERS) {
-        assert.ok([65, 67].includes(helper.mcnSince), `${helper.name}: mcnSince in {65,67}`);
+        assert.ok([65, 67, 68].includes(helper.mcnSince), `${helper.name}: mcnSince in {65,67,68}`);
     }
 });
 
@@ -113,7 +206,16 @@ test('handlebars-builtin helpers cover the core control-flow set', () => {
 
 test('platform-only helpers are classified as mcn-platform', () => {
     const platform = HELPERS.filter((h) => h.origin === 'mcn-platform').map((h) => h.name);
-    for (const name of ['query', 'queryFirst', 'getContentBlock', 'personalizationResult']) {
+    for (const name of [
+        'query',
+        'queryFirst',
+        'getContentBlock',
+        'personalizationResult',
+        'assignCoupon',
+        'claimRow',
+        'buildUrl',
+        'impressionRegion',
+    ]) {
         assert.ok(platform.includes(name), `${name} should be mcn-platform`);
     }
 });
@@ -201,6 +303,9 @@ test('each per-category helper file is non-empty and internally consistent', () 
         ['Date & Time', DATE_TIME_HELPERS],
         ['Content', CONTENT_HELPERS],
         ['Personalization', PERSONALIZATION_HELPERS],
+        ['Data', DATA_HELPERS],
+        ['Encryption', ENCRYPTION_HELPERS],
+        ['HTTP', HTTP_HELPERS],
     ];
     let total = 0;
     for (const [category, helpers] of categoryFiles) {

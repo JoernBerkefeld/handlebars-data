@@ -172,4 +172,52 @@ export const STRING_HELPERS = [
         ],
         returnType: 'string',
     },
+    {
+        name: 'regExMatch',
+        category: 'String',
+        origin: 'mcn-helper',
+        helperType: 'inline',
+        mcnSince: 68,
+        description:
+            'Applies a regular expression (Java regex syntax) to a string and returns the matched text or one capture group. Returns an empty string when nothing matches.',
+        params: [
+            { name: 'subject', type: 'string', description: 'The string to search within.' },
+            { name: 'pattern', type: 'string', description: 'The regular expression to apply.' },
+            {
+                name: 'group',
+                type: 'string',
+                description:
+                    'Name or number of the capture group to return; "0" is the whole match.',
+            },
+            {
+                name: 'options',
+                type: 'any',
+                optional: true,
+                variadic: true,
+                description:
+                    'Named boolean flags: explicitCapture, ignoreCase, ignorePatternWhitespace, multiline.',
+            },
+        ],
+        returnType: 'string',
+    },
+    {
+        name: 'stringToHex',
+        category: 'String',
+        origin: 'mcn-helper',
+        helperType: 'inline',
+        mcnSince: 68,
+        description:
+            'Returns the hexadecimal representation of the encoded characters of a string.',
+        params: [
+            { name: 'subject', type: 'string', description: 'The string to convert.' },
+            {
+                name: 'options',
+                type: 'any',
+                optional: true,
+                variadic: true,
+                description: 'Named argument charSet: UTF-8 (default) or UTF-16.',
+            },
+        ],
+        returnType: 'string',
+    },
 ];

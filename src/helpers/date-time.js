@@ -28,6 +28,23 @@ export const DATE_TIME_HELPERS = [
         returnType: 'string',
     },
     {
+        name: 'datePart',
+        category: 'Date & Time',
+        origin: 'mcn-helper',
+        helperType: 'inline',
+        mcnSince: 68,
+        description: 'Returns one component of a date or timestamp, such as the year, as a number.',
+        params: [
+            { name: 'date', type: 'any', description: 'The date or timestamp to read from.' },
+            {
+                name: 'part',
+                type: 'string',
+                description: 'Component to return: Y, M, D, H, or MI.',
+            },
+        ],
+        returnType: 'integer',
+    },
+    {
         name: 'dateDiff',
         category: 'Date & Time',
         origin: 'mcn-helper',

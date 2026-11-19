@@ -10,6 +10,9 @@ import { OBJECTS_HELPERS } from './objects.js';
 import { UTILITY_HELPERS } from './utility.js';
 import { CONTENT_HELPERS } from './content.js';
 import { PERSONALIZATION_HELPERS } from './personalization.js';
+import { DATA_HELPERS } from './data.js';
+import { ENCRYPTION_HELPERS } from './encryption.js';
+import { HTTP_HELPERS } from './http.js';
 
 const CATEGORY_ENTRIES = [
     ...MATH_HELPERS,
@@ -20,6 +23,9 @@ const CATEGORY_ENTRIES = [
     ...UTILITY_HELPERS,
     ...CONTENT_HELPERS,
     ...PERSONALIZATION_HELPERS,
+    ...DATA_HELPERS,
+    ...ENCRYPTION_HELPERS,
+    ...HTTP_HELPERS,
 ];
 
 // Original source order of helper names (preserves the curated ordering).
@@ -75,6 +81,29 @@ const ORDER = [
     'unless',
     'uppercase',
     'with',
+    // Added with MCN API 68 (Winter '27); appended so the earlier order is unchanged.
+    'assignCoupon',
+    'base64Decode',
+    'base64Encode',
+    'buildRowSetFromString',
+    'buildRowSetFromXml',
+    'buildUrl',
+    'claimRow',
+    'datePart',
+    'domain',
+    'encode',
+    'encodeURI',
+    'encodeURIComponent',
+    'guid',
+    'impressionRegion',
+    'isEmailAddress',
+    'isNullDefault',
+    'md5',
+    'regExMatch',
+    'sha1',
+    'sha256',
+    'sha512',
+    'stringToHex',
 ];
 
 const byName = new Map(CATEGORY_ENTRIES.map((helper) => [helper.name, helper]));

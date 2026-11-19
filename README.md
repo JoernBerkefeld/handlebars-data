@@ -8,7 +8,7 @@ Marketing Cloud Next's templating engine is based on [Handlebars.Net](https://gi
 
 | Export                                                      | Description                                                                     |
 | ----------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `HELPERS`                                                   | Array of all 51 MCN Handlebars helper definitions, enriched with `docUrl`.      |
+| `HELPERS`                                                   | Array of all 73 MCN Handlebars helper definitions, enriched with `docUrl`.      |
 | `helperLookup`                                              | `Map` of lowercase helper name → definition.                                    |
 | `helperNames`                                               | `Set` of lowercase helper names.                                                |
 | `CANONICAL_HELPERS`                                         | Ordered list of canonical camelCase helper names.                               |
@@ -25,10 +25,10 @@ Marketing Cloud Next's templating engine is based on [Handlebars.Net](https://gi
 Each helper carries:
 
 - `name` — canonical camelCase name.
-- `category` — one of Math, Comparison, String, Objects, Utility, Date & Time, Content, Personalization.
+- `category` — one of Math, Comparison, String, Objects, Utility, Date & Time, Content, Personalization, Data, Encryption, HTTP.
 - `origin` — `handlebars-builtin`, `mcn-helper`, or `mcn-platform`.
 - `helperType` — `inline`, `block`, or `both`.
-- `mcnSince` — MCN API version (65 = Winter '26, 67 = Summer '26).
+- `mcnSince` — MCN API version (65 = Winter '26, 67 = Summer '26, 68 = Winter '27).
 - `params`, `returnType`, `description`, `docUrl`.
 
 ## License

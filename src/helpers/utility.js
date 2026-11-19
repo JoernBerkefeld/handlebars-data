@@ -90,25 +90,6 @@ export const UTILITY_HELPERS = [
         returnType: 'string',
     },
     {
-        name: 'hash',
-        category: 'Utility',
-        origin: 'mcn-helper',
-        helperType: 'inline',
-        mcnSince: 67,
-        subexpressionOnly: true,
-        description:
-            'Constructs an object from key-value pairs. Used only as a subexpression within other helpers.',
-        params: [
-            {
-                name: 'pairs',
-                type: 'any',
-                variadic: true,
-                description: 'Key-value pairs, e.g. name="Alice" age=30.',
-            },
-        ],
-        returnType: 'object',
-    },
-    {
         name: 'length',
         category: 'Utility',
         origin: 'mcn-helper',
@@ -123,60 +104,6 @@ export const UTILITY_HELPERS = [
             },
         ],
         returnType: 'integer',
-    },
-    {
-        name: 'query',
-        category: 'Utility',
-        origin: 'mcn-platform',
-        helperType: 'inline',
-        mcnSince: 67,
-        description:
-            'Retrieves multiple records from Sales Cloud or marketing object data sources.',
-        params: [
-            { name: 'object', type: 'string', description: 'The API name of the target object.' },
-            {
-                name: 'type',
-                type: 'string',
-                description: 'The data source type: CRM or MO.',
-            },
-            {
-                name: 'options',
-                type: 'any',
-                optional: true,
-                variadic: true,
-                description: 'Named arguments such as fields, where, params, limit, sortBy, id.',
-            },
-        ],
-        returnType: 'array',
-    },
-    {
-        name: 'queryFirst',
-        category: 'Utility',
-        origin: 'mcn-platform',
-        helperType: 'inline',
-        mcnSince: 67,
-        description:
-            'Retrieves the first record from Sales Cloud, marketing objects, or data graphs matching criteria.',
-        params: [
-            {
-                name: 'object',
-                type: 'string',
-                description: 'The API name of the target object, marketing object, or data graph.',
-            },
-            {
-                name: 'type',
-                type: 'string',
-                description: 'The data source type: CRM, MO, or DG.',
-            },
-            {
-                name: 'options',
-                type: 'any',
-                optional: true,
-                variadic: true,
-                description: 'Named arguments such as fields, where, params, sortBy, id.',
-            },
-        ],
-        returnType: 'object',
     },
     {
         name: 'raiseError',
@@ -271,5 +198,103 @@ export const UTILITY_HELPERS = [
             },
         ],
         returnType: 'string',
+    },
+    {
+        name: 'base64Decode',
+        category: 'Utility',
+        origin: 'mcn-helper',
+        helperType: 'inline',
+        mcnSince: 68,
+        description: 'Turns a Base64 string back into readable text.',
+        params: [
+            { name: 'encoded', type: 'string', description: 'The Base64 text to decode.' },
+            {
+                name: 'options',
+                type: 'any',
+                optional: true,
+                variadic: true,
+                description:
+                    'Named arguments: characterEncoding (ASCII, UTF-7, UTF-8, UTF-16 or UTF-32) and abortSendOnFail (true stops the send when decoding fails; false yields an empty string instead).',
+            },
+        ],
+        returnType: 'string',
+    },
+    {
+        name: 'base64Encode',
+        category: 'Utility',
+        origin: 'mcn-helper',
+        helperType: 'inline',
+        mcnSince: 68,
+        description: 'Turns readable text into a Base64 string.',
+        params: [
+            { name: 'text', type: 'string', description: 'The text to encode.' },
+            {
+                name: 'options',
+                type: 'any',
+                optional: true,
+                variadic: true,
+                description:
+                    'Named argument characterEncoding: ASCII, UTF-7, UTF-8, UTF-16 or UTF-32.',
+            },
+        ],
+        returnType: 'string',
+    },
+    {
+        name: 'domain',
+        category: 'Utility',
+        origin: 'mcn-helper',
+        helperType: 'inline',
+        mcnSince: 68,
+        description:
+            'Returns everything behind the first @ of an email address, or null when the input has no @ or is not a string.',
+        params: [
+            {
+                name: 'emailAddress',
+                type: 'string',
+                description: 'The email address to read the domain from.',
+            },
+        ],
+        returnType: 'string',
+    },
+    {
+        name: 'guid',
+        category: 'Utility',
+        origin: 'mcn-helper',
+        helperType: 'inline',
+        mcnSince: 68,
+        description:
+            'Creates a new globally unique identifier (GUID). Takes no parameters; any that are passed are ignored.',
+        params: [],
+        returnType: 'string',
+    },
+    {
+        name: 'isEmailAddress',
+        category: 'Utility',
+        origin: 'mcn-helper',
+        helperType: 'inline',
+        mcnSince: 68,
+        description:
+            'Checks whether a value has the shape of an email address. It does not check that the mailbox or domain exists.',
+        params: [
+            { name: 'emailAddress', type: 'string', description: 'The email address to check.' },
+        ],
+        returnType: 'boolean',
+    },
+    {
+        name: 'isNullDefault',
+        category: 'Utility',
+        origin: 'mcn-helper',
+        helperType: 'inline',
+        mcnSince: 68,
+        description: 'Returns the first value, or the second one when the first is null.',
+        params: [
+            { name: 'value', type: 'any', description: 'The value to use when it is not null.' },
+            {
+                name: 'defaultValue',
+                type: 'any',
+                description: 'The replacement to use when the first value is null.',
+            },
+        ],
+        returnType: 'any',
     },
 ];
