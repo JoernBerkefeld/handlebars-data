@@ -322,3 +322,13 @@ test('each per-category helper file is non-empty and internally consistent', () 
     // The split files together cover every helper, with none missing or extra.
     assert.equal(total, HELPERS.length, 'category files cover all helpers exactly');
 });
+
+test('every helper links its canonical sfmc.guide page', () => {
+    for (const helper of HELPERS) {
+        assert.equal(
+            helper.sfmcGuideUrl,
+            `https://sfmc.guide/next/handlebars/helpers/${helper.name.toLowerCase()}/`,
+            `${helper.name}: non-canonical sfmcGuideUrl`,
+        );
+    }
+});

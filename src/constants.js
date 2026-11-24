@@ -7,6 +7,11 @@ export const DEV_DOCS_BASE =
     'https://developer.salesforce.com/docs/marketing/handlebars-for-marketing-cloud-next/references';
 
 /**
+ * Base URL of our own sfmc.guide helper pages (Marketing Cloud Next).
+ */
+export const SFMC_GUIDE_HELPERS_BASE = 'https://sfmc.guide/next/handlebars/helpers';
+
+/**
  * Map from category -> [folder, file-prefix] used to build doc URLs.
  */
 export const CATEGORY_DOC = {

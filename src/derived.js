@@ -1,7 +1,12 @@
 // AUTO-SPLIT from the original single-file src/index.js. Data moved verbatim.
 // Enrichment + lookup layer: builds the public helper/binding catalogs and
 // lookups from the raw per-category data.
-import { CATEGORY_DOC, DEV_DOCS_BASE, BINDING_DOC_URL } from './constants.js';
+import {
+    CATEGORY_DOC,
+    DEV_DOCS_BASE,
+    BINDING_DOC_URL,
+    SFMC_GUIDE_HELPERS_BASE,
+} from './constants.js';
 import { HELPERS_RAW } from './helpers/index.js';
 import { BUILTIN_BINDINGS_RAW } from './bindings.js';
 
@@ -24,13 +29,16 @@ function helperDocUrl(category, name) {
 }
 
 /**
- * Canonical MCN Handlebars helper catalog, enriched with documentation URLs.
+ * Canonical MCN Handlebars helper catalog, enriched with documentation URLs:
+ * `docUrl` (developer.salesforce.com) and `sfmcGuideUrl` (our own sfmc.guide page).
  *
- *  @type {({name: string, category: string, origin: 'handlebars-builtin' | 'mcn-helper' | 'mcn-platform', helperType: 'inline' | 'block' | 'both', mcnSince: number, description: string, params: {name: string, type: string, optional?: boolean, variadic?: boolean, description: string}[], returnType: string, subexpressionOnly?: boolean, docUrl: string})[]}
+ *  @type {({name: string, category: string, origin: 'handlebars-builtin' | 'mcn-helper' | 'mcn-platform', helperType: 'inline' | 'block' | 'both', mcnSince: number, description: string, params: {name: string, type: string, optional?: boolean, variadic?: boolean, description: string}[], returnType: string, subexpressionOnly?: boolean, docUrl: string, sfmcGuideUrl: string})[]}
  */
 export const HELPERS = HELPERS_RAW.map((helper) => ({
     ...helper,
     docUrl: helperDocUrl(helper.category, helper.name),
+    // every helper has an sfmc.guide page; the root cross-package test checks it
+    sfmcGuideUrl: `${SFMC_GUIDE_HELPERS_BASE}/${helper.name.toLowerCase()}/`,
 }));
 
 /**
