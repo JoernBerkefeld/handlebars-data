@@ -29,7 +29,9 @@ export const OBJECTS_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
-        mcnStatus: 'untested',
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'The documented call form {{filter rows "age" ">" 22 "number"}} fails the email preview with HTTP 500 on a list of objects built with AMPscript BuildRowsetFromJSON, although each and sort read the same list. Other input shapes are untested.',
         description: 'Returns a list of items that match a field/operator/value condition.',
         params: [
             { name: 'list', type: 'array', description: 'The list of objects to filter.' },
@@ -80,14 +82,12 @@ export const OBJECTS_HELPERS = [
         returnType: 'any',
     },
     {
-        name: 'jsonPath',
+        name: 'jsonpath',
         category: 'Objects',
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 67,
-        mcnStatus: 'unsupported',
-        mcnNote:
-            'Marketing Cloud Next rejects an email containing this helper when it is saved, even when it is the only helper in the email (errorType unauthorized_helper). Examples that build their input list with jsonPath therefore cannot be saved either.',
+        mcnStatus: 'matches-docs',
         description: 'Queries and filters JSON objects using a JSONPath expression.',
         params: [
             {
@@ -151,7 +151,7 @@ export const OBJECTS_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
-        mcnStatus: 'untested',
+        mcnStatus: 'matches-docs',
         description: 'Returns a portion of a list between two indices (end index exclusive).',
         params: [
             { name: 'list', type: 'array', description: 'The list to slice.' },

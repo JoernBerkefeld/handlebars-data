@@ -356,3 +356,13 @@ test('every helper links its canonical sfmc.guide page', () => {
         );
     }
 });
+
+test('helper names use the case-sensitive spelling of the Marketing Cloud Next docs', () => {
+    // Next rejects jsonPath, properCase and timeZoneConversion at save; only the docs spelling works.
+    for (const name of ['jsonpath', 'propercase', 'timezoneConversion']) {
+        assert.equal(getHelper(name)?.name, name, `${name}: catalog spelling`);
+    }
+    assert.equal(getHelper('jsonpath').mcnStatus, 'matches-docs');
+    assert.equal(getHelper('propercase').mcnStatus, 'differs-from-docs');
+    assert.equal(getHelper('timezoneConversion').mcnStatus, 'matches-docs');
+});

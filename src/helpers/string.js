@@ -82,14 +82,14 @@ export const STRING_HELPERS = [
         returnType: 'string',
     },
     {
-        name: 'properCase',
+        name: 'propercase',
         category: 'String',
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
-        mcnStatus: 'unsupported',
+        mcnStatus: 'differs-from-docs',
         mcnNote:
-            'Marketing Cloud Next rejects an email containing this helper when it is saved (the CMS reports it as an unsupported handlebars helper).',
+            'Helper names are case-sensitive: write propercase in lowercase (properCase is rejected at save). The spaces between words are dropped: {{propercase "hELLO wORLD"}} renders HelloWorld, not Hello World.',
         description: 'Capitalizes the first letter of each word and lowercases the rest.',
         params: [
             {

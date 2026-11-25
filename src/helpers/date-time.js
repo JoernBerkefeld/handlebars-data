@@ -79,14 +79,12 @@ export const DATE_TIME_HELPERS = [
         returnType: 'string',
     },
     {
-        name: 'timeZoneConversion',
+        name: 'timezoneConversion',
         category: 'Date & Time',
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 67,
-        mcnStatus: 'unsupported',
-        mcnNote:
-            'Marketing Cloud Next rejects an email containing this helper when it is saved (the CMS reports it as an unsupported handlebars helper).',
+        mcnStatus: 'matches-docs',
         description: 'Converts a date from one time zone to another.',
         params: [
             { name: 'date', type: 'string', description: 'The date to convert.' },

@@ -177,7 +177,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
-        mcnStatus: 'untested',
+        mcnStatus: 'matches-docs',
         description: 'Sorts a list of objects by a field, order, and type.',
         params: [
             { name: 'list', type: 'array', description: 'The list of objects to sort.' },
