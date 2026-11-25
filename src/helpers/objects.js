@@ -56,7 +56,7 @@ export const OBJECTS_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
-        mcnStatus: 'untested',
+        mcnStatus: 'matches-docs',
         description: 'Flattens a nested list of lists into a single list.',
         params: [
             { name: 'nestedList', type: 'array', description: 'The list of lists to flatten.' },
@@ -133,7 +133,7 @@ export const OBJECTS_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
-        mcnStatus: 'untested',
+        mcnStatus: 'matches-docs',
         description: 'Extracts a specific field from each object in a list.',
         params: [
             { name: 'list', type: 'array', description: 'The list of objects to map.' },
