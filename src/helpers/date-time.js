@@ -11,6 +11,9 @@ export const DATE_TIME_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 67,
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'The date math is correct, but the result joins date and time with `T` instead of a space, e.g. `2025-02-28T00:00:00`.',
         description: 'Adds or subtracts an amount of time to a date.',
         params: [
             { name: 'date', type: 'string', description: 'The starting date.' },
@@ -33,6 +36,7 @@ export const DATE_TIME_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description: 'Returns one component of a date or timestamp, such as the year, as a number.',
         params: [
             { name: 'date', type: 'any', description: 'The date or timestamp to read from.' },
@@ -50,6 +54,7 @@ export const DATE_TIME_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 67,
+        mcnStatus: 'matches-docs',
         description: 'Calculates the time difference between two dates in a specified unit.',
         params: [
             { name: 'date1', type: 'string', description: 'The first date.' },
@@ -68,6 +73,7 @@ export const DATE_TIME_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 67,
+        mcnStatus: 'matches-docs',
         description: 'Returns the current server date and time in UTC. Takes no parameters.',
         params: [],
         returnType: 'string',
@@ -78,6 +84,9 @@ export const DATE_TIME_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 67,
+        mcnStatus: 'unsupported',
+        mcnNote:
+            'Marketing Cloud Next rejects an email containing this helper when it is saved (the CMS reports it as an unsupported handlebars helper).',
         description: 'Converts a date from one time zone to another.',
         params: [
             { name: 'date', type: 'string', description: 'The date to convert.' },

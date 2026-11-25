@@ -11,6 +11,7 @@ export const COMPARISON_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Returns true only when all operands are truthy.',
         params: [
             { name: 'value1', type: 'any', description: 'First operand.' },
@@ -31,6 +32,7 @@ export const COMPARISON_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Compares two values using a specified operator.',
         params: [
             { name: 'leftValue', type: 'any', description: 'Left operand.' },
@@ -49,6 +51,9 @@ export const COMPARISON_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'Plain equality works, but the typed comparison `{{equals "5.0" 5 "number"}}` returns `false` instead of `true`.',
         description: 'Compares two values for equality, optionally by a comparison type.',
         params: [
             { name: 'value1', type: 'any', description: 'First value to compare.' },
@@ -69,6 +74,7 @@ export const COMPARISON_HELPERS = [
         origin: 'handlebars-builtin',
         helperType: 'block',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Conditionally renders a block based on whether a value evaluates to true.',
         params: [{ name: 'condition', type: 'any', description: 'The value to evaluate.' }],
         returnType: 'string',
@@ -79,6 +85,7 @@ export const COMPARISON_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Returns one of two values based on whether an expression is true or false.',
         params: [
             { name: 'expression', type: 'any', description: 'The expression to evaluate.' },
@@ -101,6 +108,7 @@ export const COMPARISON_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Returns true when a value is null, undefined, or an empty string.',
         params: [
             { name: 'input', type: 'any', description: 'The value to check for null or empty.' },
@@ -113,6 +121,7 @@ export const COMPARISON_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Returns true when the operand evaluates to false.',
         params: [{ name: 'value', type: 'any', description: 'The operand to negate.' }],
         returnType: 'boolean',
@@ -123,6 +132,7 @@ export const COMPARISON_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Returns true when at least one operand is truthy.',
         params: [
             { name: 'value1', type: 'any', description: 'First operand.' },
@@ -143,6 +153,7 @@ export const COMPARISON_HELPERS = [
         origin: 'handlebars-builtin',
         helperType: 'block',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Conditionally renders a block based on whether a value evaluates to false.',
         params: [{ name: 'condition', type: 'any', description: 'The value to evaluate.' }],
         returnType: 'string',

@@ -11,6 +11,9 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'Repeating a character works (`{{char 65 3}}` gives `AAA`), but `{{char 65602 1}}` made the email preview fail with HTTP 500; other codes above 255 were not tested.',
         description: 'Returns the Unicode character for a character code, optionally repeated.',
         params: [
             { name: 'code', type: 'number', description: 'Unicode character code in decimal.' },
@@ -29,6 +32,7 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Combines multiple values into a single string. Null values are skipped.',
         params: [
             { name: 'value1', type: 'any', description: 'First value to concatenate.' },
@@ -49,6 +53,7 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description:
             'Returns the 1-based position of a substring within a string (case-insensitive).',
         params: [
@@ -63,6 +68,7 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Converts all letters in a string to lowercase.',
         params: [
             { name: 'subject', type: 'string', description: 'The string to convert to lowercase.' },
@@ -81,6 +87,9 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'unsupported',
+        mcnNote:
+            'Marketing Cloud Next rejects an email containing this helper when it is saved (the CMS reports it as an unsupported handlebars helper).',
         description: 'Capitalizes the first letter of each word and lowercases the rest.',
         params: [
             {
@@ -103,6 +112,9 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'Matching ignores letter case: `{{replace "Aa" "a" "x"}}` gives `xx` instead of `Ax`.',
         description: 'Replaces every occurrence of a substring with another (case-sensitive).',
         params: [
             {
@@ -127,6 +139,9 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'Works with double braces, but in triple-brace (unescaped) output it prints an internal Java object name (`...HandlebarResultWrapper@...`) instead of the text.',
         description: 'Extracts a portion of a string starting from a 1-based position.',
         params: [
             { name: 'subject', type: 'string', description: 'The string to extract from.' },
@@ -150,6 +165,7 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Removes leading and trailing whitespace from a string.',
         params: [{ name: 'subject', type: 'string', description: 'The string value to trim.' }],
         returnType: 'string',
@@ -160,6 +176,9 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'Works with double braces, but in triple-brace (unescaped) output it prints an internal Java object name (`...HandlebarResultWrapper@...`) instead of the text.',
         description: 'Converts all letters in a string to uppercase.',
         params: [
             { name: 'subject', type: 'string', description: 'The string to convert to uppercase.' },
@@ -178,6 +197,7 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Applies a regular expression (Java regex syntax) to a string and returns the matched text or one capture group. Returns an empty string when nothing matches.',
         params: [
@@ -206,6 +226,7 @@ export const STRING_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Returns the hexadecimal representation of the encoded characters of a string.',
         params: [

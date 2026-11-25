@@ -191,6 +191,30 @@ test('getHelper / isHelper / getHelperMcnSince behave case-insensitively', () =>
     assert.equal(getHelperMcnSince('notAHelper'), null);
 });
 
+test('mcnStatus is a known label and mcnNote is set exactly for differs-from-docs / unsupported', () => {
+    const statuses = new Set(['matches-docs', 'differs-from-docs', 'unsupported', 'untested']);
+    for (const helper of HELPERS) {
+        if (helper.mcnStatus === undefined) {
+            assert.equal(helper.mcnNote, undefined, `${helper.name}: mcnNote without mcnStatus`);
+            continue;
+        }
+        assert.ok(
+            statuses.has(helper.mcnStatus),
+            `${helper.name}: unknown mcnStatus ${helper.mcnStatus}`,
+        );
+        if (helper.mcnStatus === 'differs-from-docs' || helper.mcnStatus === 'unsupported') {
+            assert.equal(typeof helper.mcnNote, 'string', `${helper.name}: mcnNote required`);
+            assert.ok(helper.mcnNote.trim().length > 0, `${helper.name}: mcnNote non-empty`);
+        } else {
+            assert.equal(
+                helper.mcnNote,
+                undefined,
+                `${helper.name}: mcnNote only for differs/unsupported`,
+            );
+        }
+    }
+});
+
 test('mcnSince is only 65, 67 or 68', () => {
     for (const helper of HELPERS) {
         assert.ok([65, 67, 68].includes(helper.mcnSince), `${helper.name}: mcnSince in {65,67,68}`);

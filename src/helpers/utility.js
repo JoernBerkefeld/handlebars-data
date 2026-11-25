@@ -11,6 +11,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'both',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description:
             'Returns a fallback value when the first argument is null, empty, or throws an exception.',
         params: [
@@ -29,6 +30,9 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'Simple patterns such as `N2` work, but the negative section of a `;`-separated pattern is ignored (`-1,234.57` instead of `(1,234.57)`) and zero-padding patterns like `000000` leave the number unpadded.',
         description: 'Formats output based on a format string and optional type specification.',
         params: [
             { name: 'subject', type: 'any', description: 'The value to format.' },
@@ -54,6 +58,9 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'Amounts format correctly, but for locales such as `de-DE` the gap between amount and currency symbol is a non-breaking space (U+00A0) instead of a regular space.',
         description: 'Formats a number as a currency value for a locale.',
         params: [
             { name: 'number', type: 'number', description: 'The number to format as currency.' },
@@ -72,6 +79,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Formats a number as a specific numeric type, such as decimal or percentage.',
         params: [
             { name: 'number', type: 'number', description: 'The number to format.' },
@@ -95,6 +103,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Returns the length of a string or the number of elements in an array.',
         params: [
             {
@@ -111,6 +120,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 67,
+        mcnStatus: 'untested',
         description:
             'Throws an exception with a message and optional error code, halting rendering.',
         params: [
@@ -130,6 +140,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'block',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description:
             'Repeats a block a specified number of times, exposing index, first, and last loop variables.',
         params: [
@@ -147,6 +158,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'block',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description:
             'Performs local variable assignment within the block scope. Variables do not persist outside the block.',
         params: [
@@ -165,6 +177,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'untested',
         description: 'Sorts a list of objects by a field, order, and type.',
         params: [
             { name: 'list', type: 'array', description: 'The list of objects to sort.' },
@@ -188,6 +201,7 @@ export const UTILITY_HELPERS = [
         origin: 'handlebars-builtin',
         helperType: 'block',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description:
             'Changes the block context to a specified object so properties can be accessed directly.',
         params: [
@@ -205,6 +219,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description: 'Turns a Base64 string back into readable text.',
         params: [
             { name: 'encoded', type: 'string', description: 'The Base64 text to decode.' },
@@ -225,6 +240,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description: 'Turns readable text into a Base64 string.',
         params: [
             { name: 'text', type: 'string', description: 'The text to encode.' },
@@ -245,6 +261,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Returns everything behind the first @ of an email address, or null when the input has no @ or is not a string.',
         params: [
@@ -262,6 +279,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Creates a new globally unique identifier (GUID). Takes no parameters; any that are passed are ignored.',
         params: [],
@@ -273,6 +291,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Checks whether a value has the shape of an email address. It does not check that the mailbox or domain exists.',
         params: [
@@ -286,6 +305,7 @@ export const UTILITY_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description: 'Returns the first value, or the second one when the first is null.',
         params: [
             { name: 'value', type: 'any', description: 'The value to use when it is not null.' },

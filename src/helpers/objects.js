@@ -11,6 +11,7 @@ export const OBJECTS_HELPERS = [
         origin: 'handlebars-builtin',
         helperType: 'block',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description:
             'Iterates over arrays, lists, and objects, rendering a block for each element.',
         params: [
@@ -28,6 +29,7 @@ export const OBJECTS_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'untested',
         description: 'Returns a list of items that match a field/operator/value condition.',
         params: [
             { name: 'list', type: 'array', description: 'The list of objects to filter.' },
@@ -52,6 +54,7 @@ export const OBJECTS_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'untested',
         description: 'Flattens a nested list of lists into a single list.',
         params: [
             { name: 'nestedList', type: 'array', description: 'The list of lists to flatten.' },
@@ -64,6 +67,7 @@ export const OBJECTS_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Retrieves a value from a list or map by index or key.',
         params: [
             { name: 'collection', type: 'any', description: 'The list or map to retrieve from.' },
@@ -81,6 +85,9 @@ export const OBJECTS_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 67,
+        mcnStatus: 'unsupported',
+        mcnNote:
+            'Marketing Cloud Next rejects an email containing this helper when it is saved, even when it is the only helper in the email (errorType unauthorized_helper). Examples that build their input list with jsonPath therefore cannot be saved either.',
         description: 'Queries and filters JSON objects using a JSONPath expression.',
         params: [
             {
@@ -102,6 +109,9 @@ export const OBJECTS_HELPERS = [
         origin: 'handlebars-builtin',
         helperType: 'inline',
         mcnSince: 67,
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'Reading an existing key works, but a key that does not exist returns the whole object (rendered as `{k=v}`) instead of an empty value.',
         description: 'Dynamically accesses an object property or array element by a variable key.',
         params: [
             {
@@ -123,6 +133,7 @@ export const OBJECTS_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'untested',
         description: 'Extracts a specific field from each object in a list.',
         params: [
             { name: 'list', type: 'array', description: 'The list of objects to map.' },
@@ -140,6 +151,7 @@ export const OBJECTS_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'untested',
         description: 'Returns a portion of a list between two indices (end index exclusive).',
         params: [
             { name: 'list', type: 'array', description: 'The list to slice.' },

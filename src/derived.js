@@ -13,7 +13,7 @@ import { BUILTIN_BINDINGS_RAW } from './bindings.js';
 /**
  * A single MCN Handlebars helper definition (before docUrl enrichment).
  *
- * @typedef {{name: string, category: string, origin: 'handlebars-builtin' | 'mcn-helper' | 'mcn-platform', helperType: 'inline' | 'block' | 'both', mcnSince: number, description: string, params: {name: string, type: string, optional?: boolean, variadic?: boolean, description: string}[], returnType: string, subexpressionOnly?: boolean}} HelperRaw
+ * @typedef {{name: string, category: string, origin: 'handlebars-builtin' | 'mcn-helper' | 'mcn-platform', helperType: 'inline' | 'block' | 'both', mcnSince: number, mcnStatus?: 'matches-docs' | 'differs-from-docs' | 'unsupported' | 'untested', mcnNote?: string, description: string, params: {name: string, type: string, optional?: boolean, variadic?: boolean, description: string}[], returnType: string, subexpressionOnly?: boolean}} HelperRaw
  */
 
 /**
@@ -32,7 +32,7 @@ function helperDocUrl(category, name) {
  * Canonical MCN Handlebars helper catalog, enriched with documentation URLs:
  * `docUrl` (developer.salesforce.com) and `sfmcGuideUrl` (our own sfmc.guide page).
  *
- *  @type {({name: string, category: string, origin: 'handlebars-builtin' | 'mcn-helper' | 'mcn-platform', helperType: 'inline' | 'block' | 'both', mcnSince: number, description: string, params: {name: string, type: string, optional?: boolean, variadic?: boolean, description: string}[], returnType: string, subexpressionOnly?: boolean, docUrl: string, sfmcGuideUrl: string})[]}
+ *  @type {({name: string, category: string, origin: 'handlebars-builtin' | 'mcn-helper' | 'mcn-platform', helperType: 'inline' | 'block' | 'both', mcnSince: number, mcnStatus?: 'matches-docs' | 'differs-from-docs' | 'unsupported' | 'untested', mcnNote?: string, description: string, params: {name: string, type: string, optional?: boolean, variadic?: boolean, description: string}[], returnType: string, subexpressionOnly?: boolean, docUrl: string, sfmcGuideUrl: string})[]}
  */
 export const HELPERS = HELPERS_RAW.map((helper) => ({
     ...helper,

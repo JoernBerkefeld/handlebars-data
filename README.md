@@ -29,6 +29,8 @@ Each helper carries:
 - `origin` — `handlebars-builtin`, `mcn-helper`, or `mcn-platform`.
 - `helperType` — `inline`, `block`, or `both`.
 - `mcnSince` — MCN API version (65 = Winter '26, 67 = Summer '26, 68 = Winter '27).
+- `mcnStatus` — how the helper behaved when rendered in a live Marketing Cloud Next email: `matches-docs`, `differs-from-docs`, `unsupported` (the email is rejected when saved), or `untested` (could not be exercised in the test run, e.g. because it needs record data or has side effects).
+- `mcnNote` — present only when `mcnStatus` is `differs-from-docs` or `unsupported`: a short description of the observed difference, written so it can be shown as an editor warning.
 - `params`, `returnType`, `description`.
 - `docUrl` — the helper's page in the Salesforce developer documentation.
 - `sfmcGuideUrl` — the helper's page on sfmc.guide, always `https://sfmc.guide/next/handlebars/helpers/<lowercase-name>/`.

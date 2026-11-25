@@ -11,6 +11,7 @@ export const PERSONALIZATION_HELPERS = [
         origin: 'mcn-platform',
         helperType: 'inline',
         mcnSince: 65,
+        mcnStatus: 'matches-docs',
         description: 'Retrieves a personalized value by key from the subscriber context.',
         params: [
             {

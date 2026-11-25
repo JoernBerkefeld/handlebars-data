@@ -20,6 +20,7 @@ export const ENCRYPTION_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Hashes a string with an algorithm chosen by name and returns the digest as lowercase hex. Errors on a missing argument or an unknown algorithm or charset.',
         params: [
@@ -39,6 +40,7 @@ export const ENCRYPTION_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Returns the MD5 digest (128 bit) of a string as hex. One-way and not safe for protecting secrets.',
         params: [
@@ -53,6 +55,7 @@ export const ENCRYPTION_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Returns the SHA-1 digest (160 bit) of a string as hex. One-way and not safe for protecting secrets.',
         params: [
@@ -67,6 +70,7 @@ export const ENCRYPTION_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Returns the SHA-256 digest of a string as hex. One-way and not safe for protecting secrets.',
         params: [
@@ -81,6 +85,7 @@ export const ENCRYPTION_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Returns the SHA-512 digest of a string as hex. One-way and not safe for protecting secrets.',
         params: [

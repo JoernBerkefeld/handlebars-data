@@ -11,6 +11,7 @@ export const CONTENT_HELPERS = [
         origin: 'mcn-platform',
         helperType: 'inline',
         mcnSince: 67,
+        mcnStatus: 'matches-docs',
         description: 'Retrieves and renders a content block within a template.',
         params: [
             {
@@ -27,6 +28,7 @@ export const CONTENT_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Splits a string at a delimiter into a rowset with a single unnamed column, one row per value.',
         params: [
@@ -41,6 +43,7 @@ export const CONTENT_HELPERS = [
         origin: 'mcn-helper',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Builds a rowset from the XML nodes an XPath expression selects; each row carries the node value, its XML, and its attributes.',
         params: [
@@ -62,6 +65,7 @@ export const CONTENT_HELPERS = [
         origin: 'mcn-platform',
         helperType: 'inline',
         mcnSince: 68,
+        mcnStatus: 'matches-docs',
         description:
             'Composes a link from a base URL plus UTM and custom query parameters and wraps it for click tracking. Errors when the base URL is empty.',
         params: [
@@ -87,6 +91,9 @@ export const CONTENT_HELPERS = [
         origin: 'mcn-platform',
         helperType: 'block',
         mcnSince: 68,
+        mcnStatus: 'differs-from-docs',
+        mcnNote:
+            'Marketing Cloud Next rejects the documented hash form name="Region" at save and requires the region name as a positional argument: {{#impressionRegion "Region"}}...{{/impressionRegion}}.',
         description:
             'Marks the enclosed part of a message as a named impression region for reporting on dynamic content. Adds no output of its own.',
         params: [
