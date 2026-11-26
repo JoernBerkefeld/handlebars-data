@@ -375,3 +375,20 @@ test('query and queryFirst keep the marketing object caveat', () => {
         assert.match(helper.mcnNote, /params=\(hash/, `${name}: where needs params`);
     }
 });
+
+test('queryFirst marks type DG as failing and points to the bound data graph', () => {
+    const helper = getHelper('queryFirst');
+    assert.match(helper.mcnNote, /With type DG every tested form failed with HTTP 500/);
+    assert.match(helper.mcnNote, /@root\.\$dataGraph/);
+    const typeParam = helper.params.find((p) => p.name === 'type');
+    assert.match(typeParam.description, /DG failed with HTTP 500/);
+});
+
+test('query marks type DG as failing and filter keeps the data graph finding', () => {
+    const query = getHelper('query');
+    assert.match(query.mcnNote, /type DG is not listed/);
+    assert.match(query.mcnNote, /@root\.\$dataGraph/);
+    const filter = getHelper('filter');
+    assert.equal(filter.mcnStatus, 'differs-from-docs');
+    assert.match(filter.mcnNote, /without filterAs the email save is rejected with HTTP 400/);
+});

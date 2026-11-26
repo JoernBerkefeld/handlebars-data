@@ -31,7 +31,7 @@ export const OBJECTS_HELPERS = [
         mcnSince: 65,
         mcnStatus: 'differs-from-docs',
         mcnNote:
-            'The documented call form {{filter rows "age" ">" 22 "number"}} fails the email preview with HTTP 500 on a list of objects built with AMPscript BuildRowsetFromJSON, and on a list built with jsonpath from a JSON string (number and string comparisons), although each, sort and map read the same lists.',
+            'The documented call form {{filter rows "age" ">" 22 "number"}} fails the email preview with HTTP 500 on a list of objects built with AMPscript BuildRowsetFromJSON, and on a list built with jsonpath from a JSON string (number and string comparisons), although each, sort and map read the same lists. On a related DMO array of the data graph bound to the email (2026-11-26, Email Builder preview) the documented five-argument form failed the whole preview as well; without filterAs the email save is rejected with HTTP 400 (a required parameter is missing). Filter rows inside #each with #if and compare or equals instead.',
         description: 'Returns a list of items that match a field/operator/value condition.',
         params: [
             { name: 'list', type: 'array', description: 'The list of objects to filter.' },
