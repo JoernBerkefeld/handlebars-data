@@ -31,7 +31,7 @@ export const OBJECTS_HELPERS = [
         mcnSince: 65,
         mcnStatus: 'differs-from-docs',
         mcnNote:
-            'The documented call form {{filter rows "age" ">" 22 "number"}} fails the email preview with HTTP 500 on a list of objects built with AMPscript BuildRowsetFromJSON, although each and sort read the same list. Other input shapes are untested.',
+            'The documented call form {{filter rows "age" ">" 22 "number"}} fails the email preview with HTTP 500 on a list of objects built with AMPscript BuildRowsetFromJSON, and on a list built with jsonpath from a JSON string (number and string comparisons), although each, sort and map read the same lists.',
         description: 'Returns a list of items that match a field/operator/value condition.',
         params: [
             { name: 'list', type: 'array', description: 'The list of objects to filter.' },

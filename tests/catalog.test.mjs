@@ -366,3 +366,12 @@ test('helper names use the case-sensitive spelling of the Marketing Cloud Next d
     assert.equal(getHelper('propercase').mcnStatus, 'differs-from-docs');
     assert.equal(getHelper('timezoneConversion').mcnStatus, 'matches-docs');
 });
+
+test('query and queryFirst keep the marketing object caveat', () => {
+    for (const name of ['query', 'queryFirst']) {
+        const helper = getHelper(name);
+        assert.equal(helper.mcnStatus, 'differs-from-docs', `${name}: mcnStatus`);
+        assert.match(helper.mcnNote, /inline filter on a key field/, `${name}: MO caveat`);
+        assert.match(helper.mcnNote, /params=\(hash/, `${name}: where needs params`);
+    }
+});

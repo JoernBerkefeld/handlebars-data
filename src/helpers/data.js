@@ -72,7 +72,7 @@ export const DATA_HELPERS = [
         mcnSince: 67,
         mcnStatus: 'differs-from-docs',
         mcnNote:
-            'Marketing Cloud Next needs an inline filter on a key field of the marketing object (for example Key__c="value") when type is MO; without one the preview fails with HTTP 500, although the docs list only object and type as required.',
+            'With type CRM, where works only with placeholders filled from params=(hash ...): = != < > <= >= on numbers, strings and dates, AND, OR and parentheses, sortBy ASC or DESC and limit (applied after sorting) all work, and = ignores case. Any literal value written inside where makes the preview fail with HTTP 500. LIKE matches the value anywhere in the field and ignores % wildcards. Without fields every field renders empty. With type MO every where form fails with HTTP 500: Marketing Cloud Next needs an inline filter on a key field of the marketing object (for example Key__c="value"); without one the preview fails with HTTP 500, although the docs list only object and type as required.',
         description:
             'Retrieves multiple records from Sales Cloud or marketing object data sources.',
         params: [
@@ -94,7 +94,7 @@ export const DATA_HELPERS = [
         mcnSince: 67,
         mcnStatus: 'differs-from-docs',
         mcnNote:
-            'Marketing Cloud Next needs an inline filter on a key field of the marketing object (for example Key__c="value") when type is MO; without one the preview fails with HTTP 500, although the docs list only object and type as required.',
+            'With type CRM, where with placeholders filled from params=(hash ...) and sortBy ASC or DESC work; when nothing matches, the result renders empty without an error. Marketing Cloud Next needs an inline filter on a key field of the marketing object (for example Key__c="value") when type is MO; without one the preview fails with HTTP 500, although the docs list only object and type as required.',
         description:
             'Retrieves the first record from Sales Cloud, marketing objects, or data graphs matching criteria.',
         params: [
