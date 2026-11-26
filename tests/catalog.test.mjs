@@ -371,7 +371,7 @@ test('query and queryFirst keep the marketing object caveat', () => {
     for (const name of ['query', 'queryFirst']) {
         const helper = getHelper(name);
         assert.equal(helper.mcnStatus, 'differs-from-docs', `${name}: mcnStatus`);
-        assert.match(helper.mcnNote, /inline filter on a key field/, `${name}: MO caveat`);
+        assert.match(helper.mcnNote, /inline filter on a field/, `${name}: MO caveat`);
         assert.match(helper.mcnNote, /params=\(hash/, `${name}: where needs params`);
     }
 });

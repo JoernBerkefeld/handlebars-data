@@ -72,7 +72,7 @@ export const DATA_HELPERS = [
         mcnSince: 67,
         mcnStatus: 'differs-from-docs',
         mcnNote:
-            'With type CRM, where works only with placeholders filled from params=(hash ...): = != < > <= >= on numbers, strings and dates, AND, OR and parentheses, sortBy ASC or DESC and limit (applied after sorting) all work, and = ignores case. Any literal value written inside where makes the preview fail with HTTP 500. LIKE matches the value anywhere in the field and ignores % wildcards. Without fields every field renders empty. With type MO every where form fails with HTTP 500: Marketing Cloud Next needs an inline filter on a key field of the marketing object (for example Key__c="value"); without one the preview fails with HTTP 500, although the docs list only object and type as required.',
+            'With type CRM, where works only with placeholders filled from params=(hash ...): = != < > <= >= on numbers, strings and dates, AND, OR and parentheses, sortBy ASC or DESC and limit (applied after sorting) all work, and = ignores case. Any literal value written inside where makes the preview fail with HTTP 500. LIKE matches the value anywhere in the field and ignores % wildcards. Without fields every field renders empty. <>, IN, NOT IN, NOT (...) and a sortBy with two fields fail with HTTP 500 (write != instead of <>); a null param works; a relationship field such as Account.Name renders empty. With type MO every where form fails with HTTP 500: Marketing Cloud Next needs at least one inline filter on a field of the marketing object (for example Key__c="value"); without one the preview fails with HTTP 500, although the docs list only object and type as required. Inline filters work on key and non-key fields (numbers quoted or not, text, booleans) and several combine with AND. limit works on MO, sortBy fails with HTTP 500. In a test where an inline filter matched two records, only one was returned. Number fields render with one decimal (7 as 7.0). Two MO queries in one email that write the same number field once quoted and once unquoted make the preview fail with HTTP 500.',
         description:
             'Retrieves multiple records from Sales Cloud or marketing object data sources.',
         params: [
@@ -94,7 +94,7 @@ export const DATA_HELPERS = [
         mcnSince: 67,
         mcnStatus: 'differs-from-docs',
         mcnNote:
-            'With type CRM, where with placeholders filled from params=(hash ...) and sortBy ASC or DESC work; when nothing matches, the result renders empty without an error. Marketing Cloud Next needs an inline filter on a key field of the marketing object (for example Key__c="value") when type is MO; without one the preview fails with HTTP 500, although the docs list only object and type as required.',
+            'With type CRM, where with placeholders filled from params=(hash ...) and sortBy ASC or DESC work; when nothing matches, the result renders empty without an error. Marketing Cloud Next needs at least one inline filter on a field of the marketing object (for example Key__c="value") when type is MO, on the key or another field; without one the preview fails with HTTP 500, although the docs list only object and type as required. sortBy on MO fails with HTTP 500.',
         description:
             'Retrieves the first record from Sales Cloud, marketing objects, or data graphs matching criteria.',
         params: [
